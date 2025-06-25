@@ -6,6 +6,14 @@
   padding-right: 10px;
 }
 
+/* 固定侧边栏 */
+.sidebar {
+  position: fixed;
+}
+.sidebar-toggle {
+  position: fixed;
+}
+
 .sidebar-nav .ul-after {
   content: "";
   width: 10px;

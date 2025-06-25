@@ -29,11 +29,15 @@
   z-index: 999999;
   height: 55px;
   width: auto;
+  pointer-events: none; /* 禁用整个链接的点击 */
 }
 .github-corner svg {
-    height: 55px;
-    width: 70px;
-  }
+  height: 55px;
+  width: 70px;
+}
+.github-corner svg path {
+  pointer-events: auto; /* 仅路径部分可点击 */
+}
 
 /* 在首页隐藏导航 */
 body[data-page="README.md"] .app-nav {
@@ -67,7 +71,7 @@ body[data-page="README.md"] .app-nav {
     width: 100%;
     padding-left: 15px;
     padding-right: 40px;
-    height: 50px;
+    height: 55px;
     margin-right: 20px;
   }
 
@@ -77,15 +81,19 @@ body[data-page="README.md"] .app-nav {
   .app-nav ul li p {
     font-size: 14px !important;
   }
+  /* 保证下拉列表在顶层 */
+  .app-nav li:hover ul {
+    z-index: 1000;
+  }
 
   .github-corner {
     right: 1px;
     top: 2px;
-    height: 48px;
+    height: 55px;
   }
   .github-corner svg {
-    height: 70px;
-    width: 70px;
+    height: 55px;
+    width: 48px;
   }
 
   .nav-links {
