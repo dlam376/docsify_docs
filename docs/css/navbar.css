@@ -1,0 +1,127 @@
+/* 设置导航栏所有链接的字体大小 */
+.app-nav ul li a {
+  font-size: 15px !important;
+}
+
+/* 设置导航栏标题的字体大小 */
+.app-nav ul li p {
+  font-size: 15px !important;
+}
+/* 固定导航 */
+.app-nav {
+  position: fixed;
+  margin: 0;
+  padding: 10px 0px 10px 0px; /*上、右、下、左*/
+  width: calc(100% - 325px);
+  background-color: #fff;
+  height: 55px;
+  border-bottom: 1px solid #eee;
+  justify-content: space-between; /* 左右布局 */
+  box-sizing: border-box;
+  padding-left: 20px;
+  padding-right: 52px; /* 预留 GitHub corner 的空间 */
+}
+
+.github-corner {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 999999;
+  height: 55px;
+  width: auto;
+}
+.github-corner svg {
+    height: 55px;
+    width: 70px;
+  }
+
+/* 在首页隐藏导航 */
+body[data-page="README.md"] .app-nav {
+  display: none;
+}
+
+/* 隐藏默认的复选框 */
+#nav-menu-checkbox {
+  display: none;
+}
+
+/* 汉堡菜单图标样式 */
+.nav-menu-icon {
+  display: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.nav-icon-bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px 0;
+  background-color: #333;
+  transition: 0.4s;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .app-nav {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 40px;
+    height: 50px;
+    margin-right: 20px;
+  }
+
+  .app-nav ul li a {
+    font-size: 14px !important;
+  }
+  .app-nav ul li p {
+    font-size: 14px !important;
+  }
+
+  .github-corner {
+    right: 1px;
+    top: 2px;
+    height: 48px;
+  }
+  .github-corner svg {
+    height: 70px;
+    width: 70px;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 50px; /* 根据导航栏高度调整 */
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #eee;
+  }
+
+  .nav-links li {
+    padding: 10px;
+  }
+
+  .nav-menu-icon {
+    display: inline-block;
+  }
+
+  /* 当复选框被选中时显示导航链接 */
+  #nav-menu-checkbox:checked ~ .nav-links {
+    display: flex;
+  }
+
+  /* 当复选框被选中时旋转汉堡菜单图标 */
+  #nav-menu-checkbox:checked ~ .nav-menu-icon .nav-icon-bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  #nav-menu-checkbox:checked ~ .nav-menu-icon .nav-icon-bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  #nav-menu-checkbox:checked ~ .nav-menu-icon .nav-icon-bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+}

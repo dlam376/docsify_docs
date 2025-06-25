@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="Description" />
+    <!-- <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+    /> -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <!-- <link
+      rel="stylesheet"
+      href="//fastly.jsdelivr.net/npm/docsify@4/lib/themes/vue.css"
+    /> -->
+    <link rel="stylesheet" href="./css/docsify.css" />
+    <link rel="stylesheet" href="./css/navbar.css" />
+    <link rel="stylesheet" href="./css/sidebar.css" />
+    <style></style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      window.$docsify = {
+        repo: "https://github.com/jmh9966",
+        onlyCover: true,
+        notFoundPage: false,
+        alias: {
+          // 强制所有 _navbar.md 请求指向根目录
+          "/.*/_navbar.md": "/_navbar.md",
+        },
+        maxLevel: 4, // 允许显示更深的层级
+        subMaxLevel: 4, // 子菜单最大层级
+        coverpage: true,
+        loadNavbar: true,
+        // loadSidebar: true,
+        // 全文搜索
+        search: {
+          paths: [
+            "/doc/back/01.design",
+            "/doc/back/02.JUC",
+            "/doc/back/03.Nginx",
+            "/doc/back/04.RabbitMQ",
+            "/doc/back/05.Redis2",
+            "/doc/database/01.SQL",
+            "/doc/database/02.mybatis",
+            "/doc/front/01.vue_base",
+            "/doc/front/02.vue3_base",
+            "/doc/os/01.linux",
+            "/doc/tools/01.tool",
+            "/doc/tools/02.util",
+          ],
+          depth: 4,
+          noData: "无结果!",
+          placeholder: "搜索...",
+          hideOtherSidebarContent: true,
+        },
+        count: {
+          countable: true,
+          fontsize: "0.9em",
+          color: "rgb(90,90,90)",
+          language: "chinese",
+        },
+        plugins: [
+          function (hook, vm) {
+            hook.ready(function () {
+              if (window.DocsifySearch) {
+                new DocsifySearch(); // 强制初始化
+              }
+            });
+
+            hook.doneEach(function () {
+              // 侧边栏展开事件
+              generateSidebar();
+              // 填充当前页面的标题
+              const pageTitle = vm.route.file
+                .split("/")
+                .pop()
+                .replace(".md", "");
+              if (pageTitle) {
+                document.title = `${pageTitle}`;
+              }
+            });
+          },
+        ],
+      };
+    </script>
+    <!-- Docsify v4 -->
+    <script src="./js/docsify.js"></script>
+    <!-- 侧边栏折叠 -->
+    <script src="./js/sidebar.js"></script>
+    <script src="./js/jq.min.js"></script>
+    <!-- 全文搜索 -->
+    <script src="./js/search.min.js"></script>
+    <!-- 字数统计 -->
+    <script src="./js/countable.js"></script>
+    <!-- 编辑插件 -->
+    <script src="./js/edit_gitgub.js"></script>
+    <!-- 回到顶部 -->
+    <script src="./js/backTop.js"></script>
+    <!-- 代码高亮 -->
+    <script src="./js/prism/prism-java.min.js"></script>
+    <script src="./js/prism/prism-bash.min.js"></script>
+    <!-- 代码复制 -->
+    <script src="./js/docsify-copy-code.min.js"></script>
+    <!-- 图片缩放 -->
+    <script src="./js/zoom-image.min.js"></script>
+
+    <!-- 插件注入 -->
+    <script>
+      window.$docsify.plugins.push(
+        EditOnGithubPlugin.create(
+          "https://github.com/dlam376/docsify_docs/blob/main/docs/",
+          null,
+          null
+        )
+      );
+    </script>
+  </body>
+</html>
